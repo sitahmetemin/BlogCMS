@@ -10,11 +10,11 @@ namespace BlogCMS.Entites.Conrete
         public string Name { get; set; }
         public string Icon { get; set; }
         public string Cover { get; set; }
-        public int Order  { get; set; }
+        public int? Order  { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
 
-        public int ParetId { get; set; }
+        public int? ParetId { get; set; }
         public Menu ParentMenu { get; set; }
 
     }

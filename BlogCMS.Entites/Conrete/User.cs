@@ -11,7 +11,7 @@ namespace BlogCMS.Entites.Conrete
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public int AuthorityId { get; set; }
+        public int? AuthorityId { get; set; }
         public Authorization Authorization { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }
