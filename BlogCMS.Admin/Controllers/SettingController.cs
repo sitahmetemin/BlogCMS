@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BlogCMS.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCMS.Admin.Controllers
@@ -10,32 +11,15 @@ namespace BlogCMS.Admin.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            using (var _contex = new BlogCMSContext())
+            {
+                var model = _contex.Settings.First(z => z.Id == 1);
+                return View(model);
+            }
         }
 
-        public IActionResult ViewCreate()
-        {
-            return View();
-        }
-
-        public IActionResult Create()
-        {
-            TempData["Status"] = "succues";
-            return Redirect("URL");
-        }
-
-        public IActionResult ViewUpdate()
-        {
-            return View();
-        }
-
+        [HttpPost]
         public IActionResult Update()
-        {
-            TempData["Status"] = "succues";
-            return Redirect("URL");
-        }
-
-        public IActionResult Delete()
         {
             TempData["Status"] = "succues";
             return Redirect("URL");

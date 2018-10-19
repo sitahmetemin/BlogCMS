@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BlogCMS.Core
 {
-    class BlogCMSContext : DbContext
+    public class BlogCMSContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -23,10 +23,23 @@ namespace BlogCMS.Core
                 Copyright = "Ahmet Emin ŞİTe Aittir.",
                 Slogan = "Slogan Buraya",
                 SiteTitle = "Site Title",
-                Logo = "Logo Adresiniz.",
-                Icon = "iconunuz",
+                Logo = "https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_TV_2015.svg.",
                 Url = "URL Buraya",
                 Description = "Site Açıklaması Burada",
+                Tel1 = "0212 626 4707",
+                Tel2 = "0000 000 0000",
+                Gsm1 = "0546 245 9882",
+                Gsm2 = "0000 000 0000",
+                Fax1 = "0000 000 0000",
+                Fax2 = "0000 000 0000",
+                Mail1 = "sitahmetemin@gmail.com",
+                Mail2 = "sitahmetemin@hotmail.com",
+                Address = "3.Defne Sok. Yeşilpınar Mah. No:5 Daire:3",
+                Country = "İstanbul",
+                Province = "Eyüpsultan",
+                Maps = "Google Maps",
+                Recapctha = "Google Recapctha",
+                Analystic = "Google Analytic",
                 Facebook = "Facebook Adresiniz",
                 Flickr = "Flickr Adresiniz",
                 Github = "Github Adresiniz.",
@@ -46,6 +59,39 @@ namespace BlogCMS.Core
                 SMTPUser = "User"
             });
 
+            modelBuilder.Entity<Authorization>().HasData(
+                new Authorization()
+                {
+                    Id = 1,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    Name = "SuperAdmin",
+                },
+                new Authorization()
+                {
+                    Id = 2,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    Name = "Admin",
+                },
+                new Authorization()
+                {
+                    Id = 3,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    Name = "Author",
+                });
+
+            modelBuilder.Entity<User>().HasData(new User()
+            {
+                Id = 1,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                AuthorizationId = 1,
+                Name = "Ahmet Emin ŞİT",
+                Email = "sitahmetemin@gmail.com",
+                Password = "123654",
+            });
         }
 
         public DbSet<Authorization> Authorizations { get; set; }
@@ -54,8 +100,5 @@ namespace BlogCMS.Core
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
-
-
- 
     }
 }

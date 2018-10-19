@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogCMS.Core.Migrations
 {
     [DbContext(typeof(BlogCMSContext))]
-    [Migration("20181019085602_initial")]
-    partial class initial
+    [Migration("20181019122810_initialEdit")]
+    partial class initialEdit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -38,6 +38,12 @@ namespace BlogCMS.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Authorizations");
+
+                    b.HasData(
+                        new { Id = 1, CreatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local), Name = "SuperAdmin", UpdatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local) },
+                        new { Id = 2, CreatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local), Name = "Admin", UpdatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local) },
+                        new { Id = 3, CreatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local), Name = "Author", UpdatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local) }
+                    );
                 });
 
             modelBuilder.Entity("BlogCMS.Entites.Conrete.Comment", b =>
@@ -141,6 +147,8 @@ namespace BlogCMS.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Adres");
+
                     b.Property<string>("Copyright");
 
                     b.Property<DateTime>("CreatedAt");
@@ -151,19 +159,33 @@ namespace BlogCMS.Core.Migrations
 
                     b.Property<string>("Facebook");
 
+                    b.Property<string>("Fax1");
+
+                    b.Property<string>("Fax2");
+
                     b.Property<string>("Flickr");
 
                     b.Property<string>("Github");
 
                     b.Property<string>("Google");
 
-                    b.Property<string>("Icon");
+                    b.Property<string>("Gsm1");
+
+                    b.Property<string>("Gsm2");
+
+                    b.Property<string>("Il");
+
+                    b.Property<string>("Ilce");
 
                     b.Property<string>("Instagram");
 
                     b.Property<string>("Linkedin");
 
                     b.Property<string>("Logo");
+
+                    b.Property<string>("Mail1");
+
+                    b.Property<string>("Mail2");
 
                     b.Property<string>("Pinterest");
 
@@ -183,6 +205,10 @@ namespace BlogCMS.Core.Migrations
 
                     b.Property<string>("Snapchat");
 
+                    b.Property<string>("Tel1");
+
+                    b.Property<string>("Tel2");
+
                     b.Property<string>("Tumblr");
 
                     b.Property<string>("Twitter");
@@ -200,7 +226,7 @@ namespace BlogCMS.Core.Migrations
                     b.ToTable("Settings");
 
                     b.HasData(
-                        new { Id = 1, Copyright = "Ahmet Emin ŞİTe Aittir.", CreatedAt = new DateTime(2018, 10, 19, 11, 56, 1, 953, DateTimeKind.Local), Description = "Site Açıklaması Burada", Facebook = "Facebook Adresiniz", Flickr = "Flickr Adresiniz", Github = "Github Adresiniz.", Google = "Google Adresiniz.", Icon = "iconunuz", Instagram = "Instagram Adresiniz.", Linkedin = "Linkedin Adresiniz.", Logo = "Logo Adresiniz.", Pinterest = "Pinterest Adresiniz.", Reddit = "Reddit Adresiniz.", SMTPHost = "Host", SMTPPassword = "Pass", SMTPPort = "Port", SMTPUser = "User", SiteTitle = "Site Title", Slogan = "Slogan Buraya", Snapchat = "Snapchat Adresiniz.", Tumblr = "Tumblr Adresiniz.", Twitter = "Twitter Adresiniz.", UpdatedAt = new DateTime(2018, 10, 19, 11, 56, 1, 953, DateTimeKind.Local), Url = "URL Buraya", Whatsapp = "Whatsapp Adresiniz.", Youtube = "Youtube Adresiniz." }
+                        new { Id = 1, Adres = "3.Defne Sok. Yeşilpınar Mah. No:5 Daire:3", Copyright = "Ahmet Emin ŞİTe Aittir.", CreatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 761, DateTimeKind.Local), Description = "Site Açıklaması Burada", Facebook = "Facebook Adresiniz", Fax1 = "0000 000 0000", Fax2 = "0000 000 0000", Flickr = "Flickr Adresiniz", Github = "Github Adresiniz.", Google = "Google Adresiniz.", Gsm1 = "0546 245 9882", Gsm2 = "0000 000 0000", Il = "İstanbul", Ilce = "Eyüpsultan", Instagram = "Instagram Adresiniz.", Linkedin = "Linkedin Adresiniz.", Logo = "https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_TV_2015.svg.", Mail1 = "0000 000 0000", Mail2 = "0000 000 0000", Pinterest = "Pinterest Adresiniz.", Reddit = "Reddit Adresiniz.", SMTPHost = "Host", SMTPPassword = "Pass", SMTPPort = "Port", SMTPUser = "User", SiteTitle = "Site Title", Slogan = "Slogan Buraya", Snapchat = "Snapchat Adresiniz.", Tel1 = "0212 626 4707", Tel2 = "0000 000 0000", Tumblr = "Tumblr Adresiniz.", Twitter = "Twitter Adresiniz.", UpdatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 761, DateTimeKind.Local), Url = "URL Buraya", Whatsapp = "Whatsapp Adresiniz.", Youtube = "Youtube Adresiniz." }
                     );
                 });
 
@@ -229,6 +255,10 @@ namespace BlogCMS.Core.Migrations
                     b.HasIndex("AuthorizationId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new { Id = 1, AuthorizationId = 1, CreatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local), Email = "sitahmetemin@gmail.com", Name = "Ahmet Emin ŞİT", Password = "123654", UpdatedAt = new DateTime(2018, 10, 19, 15, 28, 9, 763, DateTimeKind.Local) }
+                    );
                 });
 
             modelBuilder.Entity("BlogCMS.Entites.Conrete.Comment", b =>

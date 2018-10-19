@@ -15,6 +15,7 @@ namespace BlogCMS.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Create()
         {
             ViewData["Status"] = "succues";
@@ -26,13 +27,14 @@ namespace BlogCMS.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
         public IActionResult Update()
         {
             ViewData["Status"] = "succues";
             return Redirect("URL");
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int Id)
         {
             ViewData["Status"] = "succues";
             return Redirect("URL");

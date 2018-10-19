@@ -14,7 +14,20 @@ namespace BlogCMS.Entites.Conrete
         public string Description { get; set; }
         public string Copyright { get; set; }
         public string Logo { get; set; }
-        public string Icon { get; set; }
+        public string Tel1 { get; set; }
+        public string Tel2 { get; set; }
+        public string Gsm1 { get; set; }
+        public string Gsm2 { get; set; }
+        public string Mail1 { get; set; }
+        public string Mail2 { get; set; }
+        public string Fax1 { get; set; }
+        public string Fax2 { get; set; }
+        public string Address { get; set; }
+        public string Country { get; set; }
+        public string Province { get; set; }
+        public string Maps { get; set; }
+        public string Analystic { get; set; }
+        public string Recapctha { get; set; }
         public string SMTPHost { get; set; }
         public string SMTPPort { get; set; }
         public string SMTPUser { get; set; }

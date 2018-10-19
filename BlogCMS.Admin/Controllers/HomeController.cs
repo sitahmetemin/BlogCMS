@@ -15,34 +15,7 @@ namespace BlogCMS.Admin.Controllers
             return View();
         }
 
-        public IActionResult ViewCreate()
-        {
-            return View();
-        }
-
-        public IActionResult Create()
-        {
-            TempData["Status"] = "succues";
-            return Redirect("URL");
-        }
-
-        public IActionResult ViewUpdate()
-        {
-            return View();
-        }
-
-        public IActionResult Update()
-        {
-            TempData["Status"] = "succues";
-            return Redirect("URL");
-        }
-
-        public IActionResult Delete()
-        {
-            TempData["Status"] = "succues";
-            return Redirect("URL");
-        }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

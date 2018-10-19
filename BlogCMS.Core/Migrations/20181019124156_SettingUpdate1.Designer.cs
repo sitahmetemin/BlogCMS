@@ -4,14 +4,16 @@ using BlogCMS.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlogCMS.Core.Migrations
 {
     [DbContext(typeof(BlogCMSContext))]
-    partial class BlogCMSContextModelSnapshot : ModelSnapshot
+    [Migration("20181019124156_SettingUpdate1")]
+    partial class SettingUpdate1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -65,7 +65,17 @@ namespace BlogCMS.Core.Migrations
                     Description = table.Column<string>(nullable: true),
                     Copyright = table.Column<string>(nullable: true),
                     Logo = table.Column<string>(nullable: true),
-                    Icon = table.Column<string>(nullable: true),
+                    Tel1 = table.Column<string>(nullable: true),
+                    Tel2 = table.Column<string>(nullable: true),
+                    Gsm1 = table.Column<string>(nullable: true),
+                    Gsm2 = table.Column<string>(nullable: true),
+                    Mail1 = table.Column<string>(nullable: true),
+                    Mail2 = table.Column<string>(nullable: true),
+                    Fax1 = table.Column<string>(nullable: true),
+                    Fax2 = table.Column<string>(nullable: true),
+                    Adres = table.Column<string>(nullable: true),
+                    Il = table.Column<string>(nullable: true),
+                    Ilce = table.Column<string>(nullable: true),
                     SMTPHost = table.Column<string>(nullable: true),
                     SMTPPort = table.Column<string>(nullable: true),
                     SMTPUser = table.Column<string>(nullable: true),
@@ -186,9 +196,24 @@ namespace BlogCMS.Core.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Authorizations",
+                columns: new[] { "Id", "CreatedAt", "DeletedAt", "Name", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local), null, "SuperAdmin", new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local) },
+                    { 2, new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local), null, "Admin", new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local) },
+                    { 3, new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local), null, "Author", new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local) }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Settings",
-                columns: new[] { "Id", "Copyright", "CreatedAt", "DeletedAt", "Description", "Facebook", "Flickr", "Github", "Google", "Icon", "Instagram", "Linkedin", "Logo", "Pinterest", "Reddit", "SMTPHost", "SMTPPassword", "SMTPPort", "SMTPUser", "SiteTitle", "Slogan", "Snapchat", "Tumblr", "Twitter", "UpdatedAt", "Url", "Whatsapp", "Youtube" },
-                values: new object[] { 1, "Ahmet Emin ŞİTe Aittir.", new DateTime(2018, 10, 19, 11, 56, 1, 953, DateTimeKind.Local), null, "Site Açıklaması Burada", "Facebook Adresiniz", "Flickr Adresiniz", "Github Adresiniz.", "Google Adresiniz.", "iconunuz", "Instagram Adresiniz.", "Linkedin Adresiniz.", "Logo Adresiniz.", "Pinterest Adresiniz.", "Reddit Adresiniz.", "Host", "Pass", "Port", "User", "Site Title", "Slogan Buraya", "Snapchat Adresiniz.", "Tumblr Adresiniz.", "Twitter Adresiniz.", new DateTime(2018, 10, 19, 11, 56, 1, 953, DateTimeKind.Local), "URL Buraya", "Whatsapp Adresiniz.", "Youtube Adresiniz." });
+                columns: new[] { "Id", "Adres", "Copyright", "CreatedAt", "DeletedAt", "Description", "Facebook", "Fax1", "Fax2", "Flickr", "Github", "Google", "Gsm1", "Gsm2", "Il", "Ilce", "Instagram", "Linkedin", "Logo", "Mail1", "Mail2", "Pinterest", "Reddit", "SMTPHost", "SMTPPassword", "SMTPPort", "SMTPUser", "SiteTitle", "Slogan", "Snapchat", "Tel1", "Tel2", "Tumblr", "Twitter", "UpdatedAt", "Url", "Whatsapp", "Youtube" },
+                values: new object[] { 1, "3.Defne Sok. Yeşilpınar Mah. No:5 Daire:3", "Ahmet Emin ŞİTe Aittir.", new DateTime(2018, 10, 19, 15, 24, 56, 834, DateTimeKind.Local), null, "Site Açıklaması Burada", "Facebook Adresiniz", "0000 000 0000", "0000 000 0000", "Flickr Adresiniz", "Github Adresiniz.", "Google Adresiniz.", "0546 245 9882", "0000 000 0000", "İstanbul", "Eyüpsultan", "Instagram Adresiniz.", "Linkedin Adresiniz.", "https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_TV_2015.svg.", "0000 000 0000", "0000 000 0000", "Pinterest Adresiniz.", "Reddit Adresiniz.", "Host", "Pass", "Port", "User", "Site Title", "Slogan Buraya", "Snapchat Adresiniz.", "0212 626 4707", "0000 000 0000", "Tumblr Adresiniz.", "Twitter Adresiniz.", new DateTime(2018, 10, 19, 15, 24, 56, 834, DateTimeKind.Local), "URL Buraya", "Whatsapp Adresiniz.", "Youtube Adresiniz." });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "AuthorizationId", "CreatedAt", "DeletedAt", "Email", "Name", "Password", "UpdatedAt" },
+                values: new object[] { 1, 1, new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local), null, "sitahmetemin@gmail.com", "Ahmet Emin ŞİT", "123654", new DateTime(2018, 10, 19, 15, 24, 56, 836, DateTimeKind.Local) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_ParentCommentId",
