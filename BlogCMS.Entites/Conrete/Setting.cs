@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using BlogCMS.Entites.Abstract;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlogCMS.Entites.Conrete
 {
@@ -32,4 +33,6 @@ namespace BlogCMS.Entites.Conrete
         public string Snapchat { get; set; }
         public string Whatsapp { get; set; }
     }
+
+    
 }

@@ -13,10 +13,10 @@ namespace BlogCMS.Entites.Conrete
         public string Cover { get; set; }
         public string Icon { get; set; }
 
-        public int? UserId { get; set; }
+        
         public User User { get; set; }
 
-        public int? MenuId { get; set; }
+        
         public Menu Menu { get; set; }
 
     }

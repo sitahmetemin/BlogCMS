@@ -15,23 +15,32 @@ namespace BlogCMS.Admin.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult ViewCreate()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult Create()
         {
-            ViewData["Message"] = "Your contact page.";
+            TempData["Status"] = "succues";
+            return Redirect("URL");
+        }
 
+        public IActionResult ViewUpdate()
+        {
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Update()
         {
-            return View();
+            TempData["Status"] = "succues";
+            return Redirect("URL");
+        }
+
+        public IActionResult Delete()
+        {
+            TempData["Status"] = "succues";
+            return Redirect("URL");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

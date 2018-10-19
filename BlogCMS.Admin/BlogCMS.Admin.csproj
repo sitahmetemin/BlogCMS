@@ -16,4 +16,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlogCMS.Core\BlogCMS.Core.csproj" />
+    <ProjectReference Include="..\BlogCMS.Entites\BlogCMS.Entites.csproj" />
+  </ItemGroup>
+
 </Project>

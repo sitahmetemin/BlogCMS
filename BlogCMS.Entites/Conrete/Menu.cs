@@ -14,7 +14,6 @@ namespace BlogCMS.Entites.Conrete
 
         public virtual ICollection<Post> Posts { get; set; }
 
-        public int? ParetId { get; set; }
         public Menu ParentMenu { get; set; }
 
     }

@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BlogCMS.Entites\BlogCMS.Entites.csproj" />
+  </ItemGroup>
+
 </Project>
