@@ -1,0 +1,137 @@
+﻿@model System.Collections.Generic.List<BlogCMS.Entites.Conrete.Menu>
+
+@{
+    ViewBag.Title = "Menü Ekle";
+    Layout = "_Layout";
+}
+
+<!-- Basic Validation -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-green">
+                <h2 style="text-transform: uppercase">
+                    <i class="material-icons">check</i> &nbsp;menü ekle
+                </h2>
+            </div>
+            <div class="body">
+                <form id="form_validation" method="POST" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="form-groug form-float">
+                            <div class="col-md-4 form-line">
+                                <p>
+                                    <b>Bağlı Menü</b>
+                                </p>
+                                <select name="parent_id" id="parent_id" class="form-control show-tick"
+                                        data-live-search="true">
+                                    @foreach (var menu in Model)
+                                    {
+                                        <option value="@menu.Id">@menu.Name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="col-md-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input name="name" type="text" class="form-control" required>
+                                    <label class="form-label">Menü Adı</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input name="icon" type="text" class="form-control">
+                                    <label class="form-label">İcon</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group form-float ">
+                                <label>Kapak Resmi Seç</label>
+                                <input class="form-control" width="100%" type="file" name="file"/>
+                                <img height="100px" src="" id="prev"/>
+                            </div>
+                        </div>
+                        <div class="form-groug form-float">
+                            <div class="col-md-6 form-line">
+                                <p>
+                                    <b>Durum</b>
+                                </p>
+                                <select name="status" class="form-control show-tick" data-live-search="true">
+                                    <option value="1" selected>Aktif</option>
+                                    <option value="0">Pasif</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="divider" />
+                    <div class="row">
+                        <div class="form-groug form-float">
+
+                            <div class="col-md-4 form-line">
+                                <p>
+                                    <b>Menü Tipi</b>
+                                </p>
+                                <select name="type" id="type" class="form-control show-tick"
+                                        data-live-search="true">
+                                    <option value="menuListe" selected>Menu Listesi</option>
+                                    <option value="tekSayfa">Tek Sayfa</option>
+                                    <option value="link">Link Yönlendirme</option>
+                                </select>
+                            </div>
+                            <div class="col-md-8" id="menuLink">
+                                <br>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input name="link" type="text" class="form-control" required>
+                                        <label class="form-label">Link</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="TipAlani" class="row">
+                        <div class="col-md-12" id="tekSayfa">
+                            <img src="/backend/images/tekSayfa.PNG" class="img-responsive"
+                                 style="max-height: 200px; margin: auto" alt="">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary waves-effect" type="submit">
+                        <i class="material-icons">done</i>Kaydet
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Validation -->
+
+<script>
+    $('#menuLink').slideUp();
+    $(document).ready(function () {
+
+        var reader = new FileReader();
+        reader.onload = function(r_event) {
+            document.getElementById('prev').setAttribute('src', r_event.target.result);
+        }
+
+        document.getElementsByName('file')[0].addEventListener('change', function(event) {
+            reader.readAsDataURL(this.files[0]);
+        });
+
+
+        $('#type').change(function() {
+            var menuTipi = $('#type option:selected').val();
+            if (menuTipi == "link") {
+                $('#menuLink').slideDown();
+            } else {
+                $('#menuLink').slideUp();
+            }
+        });
+    });
+</script>

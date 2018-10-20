@@ -10,6 +10,10 @@ namespace BlogCMS.Admin.Controllers
     {
         public IActionResult Index()
         {
+            if (TempData["Status"] != null)
+            {
+                ViewData["Status"] = TempData["Status"];
+            }
             return View();
         }
 
@@ -20,7 +24,7 @@ namespace BlogCMS.Admin.Controllers
 
         public IActionResult Create()
         {
-            TempData["Status"] = "succues";
+            TempData["Status"] = "success";
             return Redirect("URL");
         }
 
@@ -31,13 +35,13 @@ namespace BlogCMS.Admin.Controllers
 
         public IActionResult Update()
         {
-            TempData["Status"] = "succues";
+            TempData["Status"] = "success";
             return Redirect("URL");
         }
 
         public IActionResult Delete()
         {
-            TempData["Status"] = "succues";
+            TempData["Status"] = "success";
             return Redirect("URL");
         }
     }

@@ -1,0 +1,92 @@
+﻿@model System.Collections.Generic.List<BlogCMS.Entites.Conrete.Menu>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+<!-- Basic Examples -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    İçerikler
+                </h2>
+                <ul class="m-r--5 pull-right">
+                    <a href="/Menu/ViewCreate" title="Ekle" role="button" class="btn btn-success btn-circle waves-effect waves-circle waves-float">
+                        <i class="material-icons">add</i>
+                    </a>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad</th>
+                            <th>Bağlı Menu</th>
+                            <th>Tip</th>
+                            <th>Statü</th>
+                            <th>Güncelleme Tarihi</th>
+                            <th>İşlemler</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>#</th>
+                            <th>Ad</th>
+                            <th>Bağlı Menu</th>
+                            <th>Tip</th>
+                            <th>Statü</th>
+                            <th>Güncelleme Tarihi</th>
+                            <th>İşlemler</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @foreach (var menu in Model)
+                        {
+                            <tr>
+                                <td>@menu.Id</td>
+                                <td>@menu.Name</td>
+                                <td>
+                                    @(menu.ParentMenu.Name != null ? menu.ParentMenu.Name : "Yok")
+
+                                </td>
+                                <td>
+                                    @if (menu.Type != null)
+                                    {
+                                        @menu.Type
+                                    }
+                                </td>
+                                <td>
+                                    @if(menu.Status == true)
+                                    {
+                                        <label class="label label-success">Aktif</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="label label-danger">Pasif</label>
+                                    }
+                                </td>
+                                <td>@menu.UpdatedAt<td>
+                                <td style="max-width: 20%">
+                                    <a title="Güncelle" href="/Menu/ViewUpdate/@menu.Id" class="btn btn-warning waves-effect">
+                                        <i class="material-icons">update</i>
+                                    </a>&nbsp;&nbsp;/&nbsp;
+                                    <a title="Sil" href="/Menu/Delete/@menu.Id" class="btn btn-danger waves-effect">
+                                        <i class="material-icons">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #END# Basic Examples -->

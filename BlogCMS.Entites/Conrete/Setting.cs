@@ -9,6 +9,8 @@ namespace BlogCMS.Entites.Conrete
     public class Setting : BaseEntity
     {
         public string Url { get; set; }
+        public int? DefaultMenu { get; set; }
+        public int? DefaultSlider { get; set; }
         public string SiteTitle { get; set; }
         public string Slogan { get; set; }
         public string Description { get; set; }

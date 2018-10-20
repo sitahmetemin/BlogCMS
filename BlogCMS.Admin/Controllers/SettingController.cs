@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BlogCMS.Core;
+using BlogCMS.Entites.Conrete;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCMS.Admin.Controllers
@@ -13,16 +15,28 @@ namespace BlogCMS.Admin.Controllers
         {
             using (var _contex = new BlogCMSContext())
             {
+                if (TempData["Status"] != null)
+                {
+                    ViewData["Status"] = TempData["Status"];
+                }
                 var model = _contex.Settings.First(z => z.Id == 1);
                 return View(model);
             }
         }
 
-        [HttpPost]
-        public IActionResult Update()
+        public IActionResult Update(Setting setting)
         {
-            TempData["Status"] = "succues";
-            return Redirect("URL");
+            var _context = new BlogCMSContext();
+            setting.Id = 1;
+            _context.Settings.Update(setting);
+            if(_context.SaveChanges() > 0)
+            {
+                TempData["Status"] = "success";
+                return RedirectToAction("Index");
+            }
+
+            TempData["Status"] = "error";
+            return Redirect("/Setting");
         }
     }
 }

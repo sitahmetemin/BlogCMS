@@ -2,19 +2,23 @@
     ViewData["Title"] = "Ayarlar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
-    if (ViewData["status"] != null)
+    if (ViewData["Status"] != null)
     {
-        if (ViewData["status"] == "succes")
+        if (ViewData["Status"] == "success")
         {
             <div class="alert alert-success alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 İşlem Başarılı &nbsp;<i class="fa fa-check"></i>
             </div>
         }
         else
         {
             <div class="alert alert-danger alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 İşlem Başarısız!! &nbsp;<i class="fa fa-close"></i>
             </div>
         }
@@ -22,363 +26,444 @@
 }
 <!-- Tabs With Icon Title -->
 <div class="row clearfix">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
-            <div class="header bg-red">
-                <h2>
-                    AYARLAR
-                </h2>
-            </div>
-            <div class="body">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a href="#home_with_icon_title" data-toggle="tab">
-                            <i class="material-icons">cast</i> Site
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#profile_with_icon_title" data-toggle="tab">
-                            <i class="material-icons">phone</i> İletişim
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#e_posta_tab" data-toggle="tab">
-                            <i class="material-icons">email</i> E-Posta
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#sosyal_medya_tab" data-toggle="tab">
-                            <i class="material-icons">thumb_up</i> Sosyal Medya
-                        </a>
-                    </li>
-                </ul>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="card">
+<div class="header bg-red">
+    <h2>
+        AYARLAR
+    </h2>
+</div>
+<div class="body">
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+        <a href="#home_with_icon_title" data-toggle="tab">
+            <i class="material-icons">cast</i> Site
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#profile_with_icon_title" data-toggle="tab">
+            <i class="material-icons">phone</i> İletişim
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#e_posta_tab" data-toggle="tab">
+            <i class="material-icons">email</i> E-Posta
+        </a>
+    </li>
+    <li role="presentation">
+        <a href="#sosyal_medya_tab" data-toggle="tab">
+            <i class="material-icons">thumb_up</i> Sosyal Medya
+        </a>
+    </li>
+</ul>
 
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home_with_icon_title">
-                        <!-- Basic Validation -->
-                        <div class="row clearfix">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div>
-                                    <div class="body">
-                                        <form id="form_validation" name="site" method="post" enctype="multipart/form-data">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="Url" value="@Model.Url" required>
-                                                    <label class="form-label">Site URL</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="SiteTitle" value="@Model.SiteTitle" required>
-                                                    <label class="form-label">Site Başlığı(Title)</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="Slogan" value="@Model.Slogan">
-                                                    <label class="form-label">Site Sloganı</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="Description" value="@Model.Description">
-                                                    <label class="form-label">Site Açıklaması(Description)</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="Copyright" value="@Model.Copyright">
-                                                    <label class="form-label">Haklar Bölümü(Copyright)</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <p>
-                                                        <b>Varsayılan Menü</b>
-                                                    </p>
-                                                    <select class="form-control show-tick" name="menu_id" data-live-search="true">
-                                                        <option selected value=""></option>
-                                                        <option value=""></option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <p>
-                                                        <b>Varsayılan Slider</b>
-                                                    </p>
-                                                    <select class="form-control show-tick" name="slider_id" data-live-search="true">
-                                                        <option selected value=""></option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-10">
-                                                    <div class="form-group form-float ">
-                                                        <div class="form-line">
-                                                            <p>Logo</p>
-                                                            <input type="file" class="form-control" name="site_logo">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="com-md-3">
-                                                    <img style="height: 150px" src="@Model.Logo">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <button class="btn btn-primary waves-effect" name="site" type="submit">Kaydet</button>
-                                            </div>
-                                        </form>
-                                    </div>
+<!-- Tab panes -->
+<form id="form_validation" action="/Setting/Update" name="site" method="post" enctype="multipart/form-data">
+    <div class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade in active" id="home_with_icon_title">
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="body">
+
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="Url" value="@Model.Url" required>
+                                    <label class="form-label">Site URL</label>
                                 </div>
                             </div>
-                        </div>
-                        <!-- #END# Basic Validation -->
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
-                        <!-- Basic Validation -->
-                        <div class="row clearfix">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div>
-                                    <div class="body">
-                                        <form id="form_validation" name="iletisim" method="post">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Tel1" value="@Model.Tel1">
-                                                            <label class="form-label">Telefon 1</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Tel2" value="@Model.Tel2">
-                                                            <label class="form-label">Telefon 2</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Gsm1" value="@Model.Gsm1">
-                                                            <label class="form-label">GSM 1</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Gsm2" value="@Model.Gsm2">
-                                                            <label class="form-label">GSM 2</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Fax1" value="@Model.Fax1">
-                                                            <label class="form-label">Fax</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Fax2" value="@Model.Fax2">
-                                                            <label class="form-label">Fax</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="email" class="form-control" name="Mail1" value="@Model.Mail1">
-                                                            <label class="form-label">Mail 1</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="email" class="form-control" name="Mail2" value="@Model.Mail2">
-                                                            <label class="form-label">Mail 2</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Address" value="@Model.Address">
-                                                            <label class="form-label">Adres</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Province" value="@Model.Province">
-                                                            <label class="form-label">İlçe</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="Country" value="@Model.Country">
-                                                            <label class="form-label">İl</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="Maps" value="@Model.Maps">
-                                                    <label class="form-label">Harita</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="Analystic" value="@Model.Analystic">
-                                                    <label class="form-label">Analystic</label>
-                                                </div>
-                                            </div>
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="Recapctha" value="@Model.Recapctha">
-                                                    <label class="form-label">Recapctha</label>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <button class="btn btn-primary waves-effect" name="iletisim" type="submit">Kaydet</button>
-
-                                            </div>
-                                        </form>
-                                    </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="SiteTitle" value="@Model.SiteTitle" required>
+                                    <label class="form-label">Site Başlığı(Title)</label>
                                 </div>
                             </div>
-                        </div>
-                        <!-- #END# Basic Validation -->
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="e_posta_tab">
-                        <!-- Basic Validation -->
-                        <div class="row clearfix">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div>
-                                    <div class="body">
-                                        <form id="form_validation" name="e_posta" method="post">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="smtphost" value="">
-                                                            <label class="form-label">SMTP HOST</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="smtpport" value="">
-                                                            <label class="form-label">SMTP PORT</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="smtpuser" value="">
-                                                            <label class="form-label">SMTP KULLANICI</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="smtppassword" value="">
-                                                            <label class="form-label">SMTP ŞİFRE</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="row">
-                                                <button class="btn btn-primary waves-effect" name="eposta" type="submit">Kaydet</button>
-                                            </div>
-                                        </form>
-                                    </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="Slogan" value="@Model.Slogan">
+                                    <label class="form-label">Site Sloganı</label>
                                 </div>
                             </div>
-                        </div>
-                        <!-- #END# Basic Validation -->
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="sosyal_medya_tab">
-                        <!-- Basic Validation -->
-                        <div class="row clearfix">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div>
-                                    <div class="body">
-                                        <form id="form_validation" name="iletisim" method="post">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="facebook" value="">
-                                                            <label class="form-label">Facebook</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="twitter" value="">
-                                                            <label class="form-label">Twitter</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="instagram" value="">
-                                                            <label class="form-label">Instagram</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-float">
-                                                        <div class="form-line">
-                                                            <input type="text" class="form-control" name="youtube" value="">
-                                                            <label class="form-label">Youtube</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <button class="btn btn-primary waves-effect" name="sosyal" type="submit">Kaydet</button>
-
-                                            </div>
-                                        </form>
-                                    </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="Description" value="@Model.Description">
+                                    <label class="form-label">Site Açıklaması(Description)</label>
                                 </div>
                             </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="Copyright" value="@Model.Copyright">
+                                    <label class="form-label">Haklar Bölümü(Copyright)</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Varsayılan Menü</b>
+                                    </p>
+                                    <select class="form-control show-tick" name="menu_id" data-live-search="true">
+                                        <option selected value=""></option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <p>
+                                        <b>Varsayılan Slider</b>
+                                    </p>
+                                    <select class="form-control show-tick" name="slider_id" data-live-search="true">
+                                        <option selected value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group form-float ">
+                                        <label>Kapak Resmi Seç</label>
+                                        <input class="form-control" width="100%" type="file" name="file" />
+                                    </div>
+                                </div>
+                                <div class="com-md-3">
+                                    <img style="max-height: 100px" id="prev" src="@Model.Logo">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary waves-effect" name="site" type="submit">Kaydet</button>
+                            </div>
                         </div>
-                        <!-- #END# Basic Validation -->
                     </div>
                 </div>
             </div>
+            <!-- #END# Basic Validation -->
         </div>
+        <div role="tabpanel" class="tab-pane fade" id="profile_with_icon_title">
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Tel1" value="@Model.Tel1">
+                                            <label class="form-label">Telefon 1</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Tel2" value="@Model.Tel2">
+                                            <label class="form-label">Telefon 2</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Gsm1" value="@Model.Gsm1">
+                                            <label class="form-label">GSM 1</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Gsm2" value="@Model.Gsm2">
+                                            <label class="form-label">GSM 2</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Fax1" value="@Model.Fax1">
+                                            <label class="form-label">Fax</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Fax2" value="@Model.Fax2">
+                                            <label class="form-label">Fax</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="email" class="form-control" name="Mail1" value="@Model.Mail1">
+                                            <label class="form-label">Mail 1</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="email" class="form-control" name="Mail2" value="@Model.Mail2">
+                                            <label class="form-label">Mail 2</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Address" value="@Model.Address">
+                                            <label class="form-label">Adres</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Province" value="@Model.Province">
+                                            <label class="form-label">İlçe</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Country" value="@Model.Country">
+                                            <label class="form-label">İl</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="Maps" value="@Model.Maps">
+                                    <label class="form-label">Harita</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="Analystic" value="@Model.Analystic">
+                                    <label class="form-label">Analystic</label>
+                                </div>
+                            </div>
+                            <div class="form-group form-float">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" name="Recapctha" value="@Model.Recapctha">
+                                    <label class="form-label">Recapctha</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary waves-effect" name="iletisim" type="submit">Kaydet</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Validation -->
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="e_posta_tab">
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="SMTPHost" value="@Model.SMTPHost">
+                                            <label class="form-label">SMTP HOST</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="SMTPPort" value="@Model.SMTPPort">
+                                            <label class="form-label">SMTP PORT</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="SMTPUser" value="@Model.SMTPUser">
+                                            <label class="form-label">SMTP KULLANICI</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="SMTPPassword" value="@Model.SMTPPassword">
+                                            <label class="form-label">SMTP ŞİFRE</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary waves-effect" name="eposta" type="submit">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Validation -->
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="sosyal_medya_tab">
+            <!-- Basic Validation -->
+            <div class="row clearfix">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div>
+                        <div class="body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Facebook" value="@Model.Facebook">
+                                            <label class="form-label">Facebook</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Twitter" value="@Model.Twitter">
+                                            <label class="form-label">Twitter</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Linkedin" value="@Model.Linkedin">
+                                            <label class="form-label">Linkedin</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Google" value="@Model.Google">
+                                            <label class="form-label">Google</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Whatsapp" value="@Model.Whatsapp">
+                                            <label class="form-label">Whatsapp</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Youtube" value="@Model.Youtube">
+                                            <label class="form-label">Youtube</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Instagram" value="@Model.Instagram">
+                                            <label class="form-label">Instagram</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Tumblr" value="@Model.Tumblr">
+                                            <label class="form-label">Tumblr</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Github" value="@Model.Github">
+                                            <label class="form-label">Github</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Pinterest" value="@Model.Pinterest">
+                                            <label class="form-label">Pinterest</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Snapchat" value="@Model.Snapchat">
+                                            <label class="form-label">Snapchat</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Flickr" value="@Model.Flickr">
+                                            <label class="form-label">Flickr</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control" name="Reddit" value="@Model.Reddit">
+                                            <label class="form-label">Reddit</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button class="btn btn-primary waves-effect" name="sosyal" type="submit">Kaydet</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Validation -->
+        </div>
+
     </div>
+</form>
+</div>
+</div>
+</div>
 </div>
 <!-- #END# Tabs With Icon Title -->
 
+
+<script>
+    $(document).ready(function() {
+
+        var reader = new FileReader();
+        reader.onload = function(r_event) {
+            document.getElementById('prev').setAttribute('src', r_event.target.result);
+        }
+
+        document.getElementsByName('file')[0].addEventListener('change',
+            function(event) {
+                reader.readAsDataURL(this.files[0]);
+            });
+    });
+</script>

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Linq;
+using BlogCMS.Core;
+using BlogCMS.Entites.Conrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BlogCMS.Admin.Controllers
@@ -7,19 +10,38 @@ namespace BlogCMS.Admin.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            using (var context = new BlogCMSContext())
+            {
+                if (TempData["Status"] != null)
+                {
+                    ViewData["Status"] = TempData["Status"];
+                }
+                var model = context.Menus.Where(a => a.DeletedAt == null).ToList();
+                return View(model);
+            }
+            
         }
 
         public IActionResult ViewCreate()
         {
-            return View();
+            using (var context = new BlogCMSContext())
+            {
+                var model = context.Menus.Where(z => z.DeletedAt == null).ToList();
+                return View(model);
+            }
         }
 
         [HttpPost]
-        public IActionResult Create()
+        public IActionResult Create(Menu menu)
         {
-            ViewData["Status"] = "succues";
-            return Redirect("URL");
+            using (var _context = new BlogCMSContext())
+            {
+                _context.Add(menu);
+                _context.SaveChanges();
+                TempData["Status"] = "success";
+                return Redirect("/Menu");
+            }
+            
         }
 
         public IActionResult ViewUpdate()
@@ -30,13 +52,13 @@ namespace BlogCMS.Admin.Controllers
         [HttpPost]
         public IActionResult Update()
         {
-            ViewData["Status"] = "succues";
+            TempData["Status"] = "success";
             return Redirect("URL");
         }
 
         public IActionResult Delete(int Id)
         {
-            ViewData["Status"] = "succues";
+            TempData["Status"] = "success";
             return Redirect("URL");
         }
     }

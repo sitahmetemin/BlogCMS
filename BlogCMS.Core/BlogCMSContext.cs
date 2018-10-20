@@ -23,7 +23,7 @@ namespace BlogCMS.Core
                 Copyright = "Ahmet Emin ŞİTe Aittir.",
                 Slogan = "Slogan Buraya",
                 SiteTitle = "Site Title",
-                Logo = "https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_TV_2015.svg.",
+                Logo = "https://upload.wikimedia.org/wikipedia/commons/2/2f/Logo_TV_2015.svg",
                 Url = "URL Buraya",
                 Description = "Site Açıklaması Burada",
                 Tel1 = "0212 626 4707",
@@ -100,5 +100,7 @@ namespace BlogCMS.Core
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Album> Albums { get; set; }
+        public DbSet<Section> Sections { get; set; }
     }
 }
