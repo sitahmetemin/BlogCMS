@@ -11,7 +11,7 @@ namespace BlogCMS.Entites.Conrete
         public string Description { get; set; }
         public string Content { get; set; }
         public string Html { get; set; }
-        public bool Status { get; set; }
+        public int Status { get; set; }
         public string Cover { get; set; }
         
     }

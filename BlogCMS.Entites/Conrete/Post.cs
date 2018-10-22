@@ -14,7 +14,7 @@ namespace BlogCMS.Entites.Conrete
         public string Video { get; set; }
         public string Cover { get; set; }
         public string Icon { get; set; }
-        public bool Status { get; set; }
+        public int Status { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 

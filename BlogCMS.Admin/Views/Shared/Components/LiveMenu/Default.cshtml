@@ -1,0 +1,11 @@
+﻿@model List<BlogCMS.Entites.Conrete.Menu>
+
+<p>
+    <b>Bağlı Menü</b>
+</p>
+<select name="ParentMenuId" id="ParentMenuId" class="form-control show-tick" data-live-search="true">
+    @foreach (var menu in Model)
+    {
+        <option value="@menu.Id">@menu.Name</option>
+    }
+</select>

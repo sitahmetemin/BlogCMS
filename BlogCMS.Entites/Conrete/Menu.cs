@@ -13,7 +13,7 @@ namespace BlogCMS.Entites.Conrete
         public string Cover { get; set; }
         public string Type { get; set; }
         public bool Lock { get; set; }
-        public bool Status { get; set; }
+        public int Status { get; set; }
         public int? Order  { get; set; }
 
         public virtual ICollection<Post> Posts { get; set; }

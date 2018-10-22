@@ -1,17 +1,28 @@
 ﻿@model System.Collections.Generic.List<BlogCMS.Entites.Conrete.Menu>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "Menüler";
     Layout = "_Layout";
 }
 
+@if (ViewData["Status"] != null)
+{
+    <div class="alert @(ViewData["Status"] == "error" ? " alert-danger " : "alert-success")  alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @( ViewData["Status"] == "error" ? Html.Raw("İşlem Başarısız!! &nbsp;<i class='material-icons'>error_outline</i>") : Html.Raw("İşlem Başarılı!! &nbsp;<i class='material-icons'>done_all</i>"))
+    </div>
+}
 
+<!-- JQuery DataTable Css -->
+<link href="~/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 <!-- Basic Examples -->
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
-                <h2>
+                <h2 style="text-transform: uppercase">
                     İçerikler
                 </h2>
                 <ul class="m-r--5 pull-right">
@@ -24,64 +35,58 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                         <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Ad</th>
-                            <th>Bağlı Menu</th>
-                            <th>Tip</th>
-                            <th>Statü</th>
-                            <th>Güncelleme Tarihi</th>
-                            <th>İşlemler</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Ad</th>
+                                <th>Bağlı Menu</th>
+                                <th>Tip</th>
+                                <th>Statü</th>
+                                <th>Güncelleme Tarihi</th>
+                                <th>İşlemler</th>
+                            </tr>
                         </thead>
                         <tfoot>
-                        <tr>
-                            <th>#</th>
-                            <th>Ad</th>
-                            <th>Bağlı Menu</th>
-                            <th>Tip</th>
-                            <th>Statü</th>
-                            <th>Güncelleme Tarihi</th>
-                            <th>İşlemler</th>
-                        </tr>
+                            <tr>
+                                <th>#</th>
+                                <th>Ad</th>
+                                <th>Bağlı Menu</th>
+                                <th>Tip</th>
+                                <th>Statü</th>
+                                <th>Güncelleme Tarihi</th>
+                                <th>İşlemler</th>
+                            </tr>
                         </tfoot>
                         <tbody>
-                        @foreach (var menu in Model)
-                        {
-                            <tr>
-                                <td>@menu.Id</td>
-                                <td>@menu.Name</td>
-                                <td>
-                                    @(menu.ParentMenu.Name != null ? menu.ParentMenu.Name : "Yok")
-
-                                </td>
-                                <td>
-                                    @if (menu.Type != null)
-                                    {
-                                        @menu.Type
-                                    }
-                                </td>
-                                <td>
-                                    @if(menu.Status == true)
-                                    {
-                                        <label class="label label-success">Aktif</label>
-                                    }
-                                    else
-                                    {
-                                        <label class="label label-danger">Pasif</label>
-                                    }
-                                </td>
-                                <td>@menu.UpdatedAt<td>
-                                <td style="max-width: 20%">
-                                    <a title="Güncelle" href="/Menu/ViewUpdate/@menu.Id" class="btn btn-warning waves-effect">
-                                        <i class="material-icons">update</i>
-                                    </a>&nbsp;&nbsp;/&nbsp;
-                                    <a title="Sil" href="/Menu/Delete/@menu.Id" class="btn btn-danger waves-effect">
-                                        <i class="material-icons">delete</i>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
+                            @foreach (var menu in Model)
+                            {
+                                <tr>
+                                    <td>@menu.Id</td>
+                                    <td>@menu.Name</td>
+                                    <td>
+                                        @(menu.ParentMenuId != null ? menu.ParentMenu.Name : "Yok")
+                                    </td>
+                                    <td>
+                                        @if (menu.Type != null)
+                                        {
+                                            @menu.Type
+                                        }
+                                    </td>
+                                    <td>
+                                        <label class="label @(menu.Status == 1 ? "label-success" : "label-danger" )">@(menu.Status == 1 ? "AKTİF" : "PASİF")</label>
+                                    </td>
+                                    <td>
+                                    @menu.UpdatedAt
+                                    </td>
+                                    <td style="max-width: 20%">
+                                        <a title="Güncelle" href="/Menu/ViewUpdate/@menu.Id" class="btn btn-warning waves-effect">
+                                            <i class="material-icons">update</i>
+                                        </a>&nbsp;&nbsp;/&nbsp;
+                                        <a title="Sil" href="/Menu/Delete/@menu.Id" class="btn btn-danger waves-effect">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -90,3 +95,15 @@
     </div>
 </div>
 <!-- #END# Basic Examples -->
+
+<!-- Jquery DataTable Plugin Js -->
+<script src="~/plugins/jquery-datatable/jquery.dataTables.js"></script>
+<script src="~/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+<script src="~/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+<script src="~/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+<script src="~/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+<script src="~/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+<script src="~/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+<script src="~/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+<script src="~/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+<script src="~/js/pages/tables/jquery-datatable.js"></script>

@@ -16,10 +16,10 @@ namespace BlogCMS.Admin.Controllers
                 {
                     ViewData["Status"] = TempData["Status"];
                 }
+
                 var model = context.Menus.Where(a => a.DeletedAt == null).ToList();
                 return View(model);
             }
-            
         }
 
         public IActionResult ViewCreate()
@@ -31,7 +31,7 @@ namespace BlogCMS.Admin.Controllers
             }
         }
 
-        [HttpPost]
+
         public IActionResult Create(Menu menu)
         {
             using (var _context = new BlogCMSContext())
@@ -41,25 +41,51 @@ namespace BlogCMS.Admin.Controllers
                 TempData["Status"] = "success";
                 return Redirect("/Menu");
             }
-            
         }
 
-        public IActionResult ViewUpdate()
+        public IActionResult ViewUpdate(int Id)
         {
-            return View();
+            using (var _context = new BlogCMSContext())
+            {
+                var menu = _context.Menus.FirstOrDefault(x => x.Id == Id);
+                return View(menu);
+            }
         }
 
         [HttpPost]
-        public IActionResult Update()
+        public IActionResult Update(Menu menu)
         {
-            TempData["Status"] = "success";
-            return Redirect("URL");
+            using (var _context = new BlogCMSContext())
+            {
+                _context.Menus.Update(menu);
+                var sayac = _context.SaveChanges();
+                if (sayac > 0)
+                {
+                    TempData["Status"] = "success";
+                    return Redirect("/Menu");
+                }
+                TempData["Status"] = "error";
+                return Redirect("/Menu");
+            }
+            
         }
 
         public IActionResult Delete(int Id)
         {
-            TempData["Status"] = "success";
-            return Redirect("URL");
+            using (var _context = new BlogCMSContext())
+            {
+                var silinecek = _context.Menus.FirstOrDefault(x => x.Id == Id);
+                _context.Remove(silinecek);
+                var sayac = _context.SaveChanges();
+                if (sayac > 0)
+                {
+                    TempData["Status"] = "success";
+                    return Redirect("/Menu");
+                }
+
+                TempData["Status"] = "error";
+                return Redirect("/Menu");
+            }
         }
     }
 }

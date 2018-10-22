@@ -21,4 +21,8 @@
     <ProjectReference Include="..\BlogCMS.Entites\BlogCMS.Entites.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\Components\" />
+  </ItemGroup>
+
 </Project>

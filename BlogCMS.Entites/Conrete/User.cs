@@ -10,6 +10,7 @@ namespace BlogCMS.Entites.Conrete
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        public int Status { get; set; }
 
         public int? AuthorizationId { get; set; }
         public Authorization Authorization { get; set; }
